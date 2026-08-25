@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Portfolio — [Tu Nombre]</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=INTER:wght@400;600;700&family=PLAYFAIR+DISPLAY:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="#" class="logo">Clarice Boudgouste</a>
+      <ul class="nav-links">
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <button id="toggle-tema">🌙</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero">
+      <h1>Hola, soy Clarice Boudgouste</h1>
+      <p>Desarrollador Web Front-End</p>
+      <a href="#contacto" class="btn-cta">Contactame</a>
+    </section>
+
+    <section id="sobre-mi">
+      <h2>Sobre Mí</h2>
+      <div class="sobre-mi-contenido">
+        <img id="foto" src="foto_persona_mejorada.jpg" alt="Foto Personal">
+        <div class="sobre-mi-texto">
+          <p>Me llamo Clarice Boudgouste y soy una persona a la que le apasiona estudiar y aprender cosas nuevas todos los días. Actualmente estoy estudiando Programación Web, un área que me entusiasma profundamente porque me permite combinar la lógica con la creatividad. Me encanta desarrollar páginas web, dándole forma a ideas y convirtiéndolas en proyectos funcionales y visualmente atractivos. </p>
+
+          <p>Además de la programación, también me dedico al estudio del inglés, ya que considero que es una herramienta fundamental tanto para mi desarrollo profesional como personal. Me gusta desafiarme constantemente y seguir ampliando mis conocimientos en distintas áreas. </p>
+
+          <p>Fuera del mundo del estudio y la tecnología, disfruto de mis hobbies: el tenis, que me permite mantenerme activa y despejar la mente, y la cerámica, una actividad que me conecta con mi lado más creativo y manual, permitiéndome crear piezas únicas con mis propias manos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos">
+      <h2>Mis Proyectos</h2>
+       
+
+        <section class="proyectos-grid">
+
+          <section class="tarjeta-proyecto">
+            <section class="tarjeta-proyecto-h3">
+              Proyecto La Cantonesa
+            </section>
+            <section class="tarjeta-proyecto-contenido">
+              <section class="tarjeta-proyecto-img">
+                <img src="C:\Users\cboud\Programacion web\Proyecto16\LA CANTONESA.jpg" alt="">
+              </section>
+              <section class="tarjeta-proyecto-p">
+                Desarrollo para aprender a usar mas estilos y algunas funciones de un formulario
+              </section>
+            </section>
+          </section> <!-- ✅ cierra la tarjeta 1 -->
+
+          <section class="tarjeta-proyecto">
+            <section class="tarjeta-proyecto-h3">
+              Proyecto La Cantonesa
+            </section>
+            <section class="tarjeta-proyecto-contenido">
+              <section class="tarjeta-proyecto-img">
+                <img src="C:\Users\cboud\Programacion web\Proyecto16\LA CANTONESA.jpg" alt="">
+              </section>
+              <section class="tarjeta-proyecto-p">
+                Desarrollo para aprender a usar mas estilos y algunas funciones de un formulario
+              </section>
+            </section>
+          </section> <!-- ✅ cierra la tarjeta 2 -->
+
+
+           <section class="tarjeta-proyecto">
+            <section class="tarjeta-proyecto-h3">
+              Proyecto La Cantonesa
+            </section>
+            <section class="tarjeta-proyecto-contenido">
+              <section class="tarjeta-proyecto-img">
+                <img src="C:\Users\cboud\Programacion web\Proyecto16\LA CANTONESA.jpg" alt="">
+              </section>
+              <section class="tarjeta-proyecto-p">
+                Desarrollo para aprender a usar mas estilos y algunas funciones de un formulario
+              </section>
+            </section>
+          </section> <!-- ✅ cierra la tarjeta 3 -->
+
+       </section>
+      <!-- Grid de tarjetas con Flexbox wrap -->
+    </section>
+
+    <section id="habilidades">
+      <h2>Habilidades</h2>
+      <section class="tags-container">
+        <section class="tag">
+          Manejo de HTML
+        </section>
+        <section class="tag">
+          Manejo de CSS
+        </section>
+        <section class="tag">
+          Manejo de JAVASCRIPT
+        </section>
+         <section class="tag">
+          Adaptabilidad a Distintos Proyectos
+        </section> <section class="tag">
+          Buen Desempeño en Trabajo en Equipos
+        </section> <section class="tag">
+          Facilidad para Aprender
+        </section> <section class="tag">
+          Experiencia en Gestion de Equipos de Trabajp
+        </section> <section class="tag">
+          Experiencia en Tareas Docentes.
+        </section> 
+         <section class="tag">
+          Buen uso de Lenguaje Comunicacional.
+        </section>
+       <section class="tag">
+         Escucha Activa y Compromiso Laboral.
+        </section>
+
+      </section>
+      <!-- Tags o barras de tecnologías -->
+    </section>
+
+    
+     <section id="contacto">
+      <h2>Contacto</h2>
+      <form id="form-contacto">
+        <div>
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre">
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="tu@email.com">
+        </div>
+        <div>
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" placeholder="Contame en qué puedo ayudarte"></textarea>
+        </div>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Clarice Boudgouste. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
