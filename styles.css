@@ -14,7 +14,7 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-h1, h2 {
+h1, h2, {
   font-family: 'Playfair Display', serif;
   margin: 0;
 }
@@ -44,6 +44,14 @@ section h2 {
 #proyectos h2,
 #habilidades h2 {
   margin-bottom: 0;
+}
+
+#proyectos {
+  padding-bottom: 1rem;
+}
+
+#habilidades {
+  padding-botton: 1rem;
 }
 
 footer {
@@ -123,14 +131,36 @@ nav {
   justify-content: center;
   text-align: center;
   padding: 2rem 1.5rem;
-  background: linear-gradient(135deg, #1F5A5E 0%, #12262B 100%);
+  background: linear-gradient(135deg, #1F5A5E 0%, #12262B 50%, #1F5A5E 100%);
+  background-size: 200% 200%;
+  animation: hero-gradiente 10s ease infinite;
   color: #ffffff;
+}
+
+@keyframes hero-gradiente {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 #hero h1 {
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 700;
   margin-bottom: 1rem;
+  opacity: 0;
+  animation: aparecer 0.8s ease-out forwards;
+  animation-delay: 0.1s;
 }
 
 #hero p {
@@ -138,7 +168,9 @@ nav {
   font-family: 'Inter', sans-serif;
   max-width: 40rem;
   margin-bottom: 2rem;
-  opacity: 0.9;
+  opacity: 0;
+  animation: aparecer 0.8s ease-out forwards;
+  animation-delay: 0.4s;
 }
 
 .btn-cta {
@@ -152,6 +184,9 @@ nav {
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  animation: aparecer 0.8s ease-out forwards;
+  animation-delay: 0.7s;
 }
 
 .btn-cta:hover {
@@ -205,13 +240,19 @@ nav {
   background: #ffffff;
   border-radius: 0.75rem;
   overflow: hidden;
+  border: 0.0625rem solid rgba(31, 90, 94, 0.15);
   box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
 .tarjeta-proyecto:hover {
-  transform: translateY(-0.5rem);
-  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-0.6rem) scale(1.02);
+  box-shadow: 0 0.75rem 1.75rem rgba(31, 90, 94, 0.22);
+  border-color: #C9A24B;
+}
+
+.tarjeta-proyecto-img {
+  overflow: hidden;
 }
 
 .tarjeta-proyecto img {
@@ -219,25 +260,34 @@ nav {
   height: 12rem;
   object-fit: cover;
   display: block;
+  transition: transform 0.4s ease;
+}
+
+.tarjeta-proyecto:hover img {
+  transform: scale(1.08);
 }
 
 .tarjeta-proyecto-contenido {
-  padding: 1.25rem;
+  padding: 1rem;
 }
 
-.tarjeta-proyecto h3 {
+.tarjeta-proyecto-h3 {
   font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-}
+  font-weight: 700;
+  padding: 1rem 1rem 0;
+  text-align: center ;
+  }
 
-.tarjeta-proyecto p {
-  font-size: 0.95rem;
+.tarjeta-proyecto-p {
+  font-size: 1 rem;
   color: #555;
 }
 
 /* ============================================
    HABILIDADES (tags/badges)
    ============================================ */
+
+
 .tags-container {
   display: flex;
   flex-wrap: wrap;
@@ -268,6 +318,7 @@ nav {
    ============================================ */
 #contacto {
   max-width: 40rem;
+
 }
 
 #form-contacto {
@@ -350,6 +401,7 @@ body.dark-mode #toggle-tema:hover {
 body.dark-mode .tarjeta-proyecto {
   background: #16302F;
   color: #e0e0e0;
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 body.dark-mode .tarjeta-proyecto p {
