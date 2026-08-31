@@ -14,7 +14,7 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-h1, h2, {
+h1, h2{
   font-family: 'Playfair Display', serif;
   margin: 0;
 }
@@ -51,7 +51,7 @@ section h2 {
 }
 
 #habilidades {
-  padding-botton: 1rem;
+  padding-top: 1 rem;
 }
 
 footer {
