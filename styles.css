@@ -14,7 +14,7 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-h1, h2{
+h1, h2 {
   font-family: 'Playfair Display', serif;
   margin: 0;
 }
@@ -44,14 +44,6 @@ section h2 {
 #proyectos h2,
 #habilidades h2 {
   margin-bottom: 0;
-}
-
-#proyectos {
-  padding-bottom: 1rem;
-}
-
-#habilidades {
-  padding-top: 1 rem;
 }
 
 footer {
@@ -240,15 +232,13 @@ nav {
   background: #ffffff;
   border-radius: 0.75rem;
   overflow: hidden;
-  border: 0.0625rem solid rgba(31, 90, 94, 0.15);
   box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  transition: all 0.3s ease;
 }
 
 .tarjeta-proyecto:hover {
-  transform: translateY(-0.6rem) scale(1.02);
-  box-shadow: 0 0.75rem 1.75rem rgba(31, 90, 94, 0.22);
-  border-color: #C9A24B;
+  transform: translateY(-0.5rem);
+  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15);
 }
 
 .tarjeta-proyecto-img {
@@ -268,26 +258,23 @@ nav {
 }
 
 .tarjeta-proyecto-contenido {
-  padding: 1rem;
+  padding: 1.25rem;
 }
 
 .tarjeta-proyecto-h3 {
   font-size: 1.2rem;
   font-weight: 700;
-  padding: 1rem 1rem 0;
-  text-align: center ;
-  }
+  padding: 1.25rem 1.25rem 0;
+}
 
 .tarjeta-proyecto-p {
-  font-size: 1 rem;
+  font-size: 0.95rem;
   color: #555;
 }
 
 /* ============================================
    HABILIDADES (tags/badges)
    ============================================ */
-
-
 .tags-container {
   display: flex;
   flex-wrap: wrap;
@@ -318,7 +305,6 @@ nav {
    ============================================ */
 #contacto {
   max-width: 40rem;
-
 }
 
 #form-contacto {
@@ -373,6 +359,41 @@ nav {
   background: #163E41;
 }
 
+.error-mensaje {
+  display: block;
+  min-height: 1.1rem;
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: #d1414a;
+}
+
+#form-contacto input.campo-invalido,
+#form-contacto textarea.campo-invalido {
+  border-color: #d1414a;
+  box-shadow: 0 0 0 0.2rem rgba(209, 65, 74, 0.15);
+}
+
+.exito-mensaje {
+  display: none;
+  margin-top: 0.5rem;
+  padding: 0.9rem 1rem;
+  border-radius: 0.5rem;
+  background: #E4F3E8;
+  color: #1F5A5E;
+  font-weight: 600;
+  text-align: center;
+}
+
+.exito-mensaje.visible {
+  display: block;
+  animation: aparecer 0.5s ease-out;
+}
+
+body.dark-mode .exito-mensaje {
+  background: #1E3B32;
+  color: #C9A24B;
+}
+
 /* ============================================
    MODO OSCURO
    ============================================ */
@@ -401,7 +422,6 @@ body.dark-mode #toggle-tema:hover {
 body.dark-mode .tarjeta-proyecto {
   background: #16302F;
   color: #e0e0e0;
-  border-color: rgba(255, 255, 255, 0.08);
 }
 
 body.dark-mode .tarjeta-proyecto p {

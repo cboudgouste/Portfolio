@@ -18,26 +18,90 @@ toggleBtn.addEventListener('click', () => {
 });
 
 // ============================================
-// b) VALIDACIÓN DE FORMULARIO
+// b) VALIDACIÓN DE FORMULARIO (en tiempo real)
 // ============================================
 const form = document.getElementById('form-contacto');
+const campoNombre = document.getElementById('nombre');
+const campoEmail = document.getElementById('email');
+const campoMensaje = document.getElementById('mensaje');
+const errorNombre = document.getElementById('error-nombre');
+const errorEmail = document.getElementById('error-email');
+const errorMensaje = document.getElementById('error-mensaje-campo');
+const exitoMensaje = document.getElementById('exito-mensaje');
+
+function validarNombre() {
+  const valor = campoNombre.value.trim();
+  if (!valor) {
+    mostrarError(campoNombre, errorNombre, 'El nombre es obligatorio');
+    return false;
+  }
+  limpiarError(campoNombre, errorNombre);
+  return true;
+}
+
+function validarEmail() {
+  const valor = campoEmail.value.trim();
+  const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!valor) {
+    mostrarError(campoEmail, errorEmail, 'El email es obligatorio');
+    return false;
+  }
+  if (!regexEmail.test(valor)) {
+    mostrarError(campoEmail, errorEmail, 'Ingresá un email válido');
+    return false;
+  }
+  limpiarError(campoEmail, errorEmail);
+  return true;
+}
+
+function validarMensaje() {
+  const valor = campoMensaje.value.trim();
+  if (!valor) {
+    mostrarError(campoMensaje, errorMensaje, 'El mensaje es obligatorio');
+    return false;
+  }
+  limpiarError(campoMensaje, errorMensaje);
+  return true;
+}
+
+function mostrarError(campo, spanError, texto) {
+  campo.classList.add('campo-invalido');
+  spanError.textContent = texto;
+}
+
+function limpiarError(campo, spanError) {
+  campo.classList.remove('campo-invalido');
+  spanError.textContent = '';
+}
+
+// Validar cada campo apenas el usuario deja de tocarlo o escribe
+campoNombre.addEventListener('blur', validarNombre);
+campoEmail.addEventListener('blur', validarEmail);
+campoMensaje.addEventListener('blur', validarMensaje);
+
+campoNombre.addEventListener('input', () => {
+  if (campoNombre.classList.contains('campo-invalido')) validarNombre();
+});
+campoEmail.addEventListener('input', () => {
+  if (campoEmail.classList.contains('campo-invalido')) validarEmail();
+});
+campoMensaje.addEventListener('input', () => {
+  if (campoMensaje.classList.contains('campo-invalido')) validarMensaje();
+});
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  const nombre = document.getElementById('nombre').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const mensaje = document.getElementById('mensaje').value.trim();
-  let errores = [];
 
-  if (!nombre) errores.push('El nombre es obligatorio');
-  if (!email || !email.includes('@')) errores.push('Ingresá un email válido');
-  if (!mensaje) errores.push('El mensaje es obligatorio');
+  const nombreOk = validarNombre();
+  const emailOk = validarEmail();
+  const mensajeOk = validarMensaje();
 
-  if (errores.length > 0) {
-    alert('Errores:\n' + errores.join('\n'));
-  } else {
-    alert('¡Mensaje enviado!');
+  if (nombreOk && emailOk && mensajeOk) {
+    exitoMensaje.textContent = 'Gracias por comunicarte conmigo, a la brevedad contestaré tu mensaje.';
+    exitoMensaje.classList.add('visible');
     form.reset();
+  } else {
+    exitoMensaje.classList.remove('visible');
   }
 });
 
