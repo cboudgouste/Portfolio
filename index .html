@@ -151,20 +151,24 @@
      <section id="contacto">
       <h2>Contacto</h2>
       <form id="form-contacto">
-        <div>
-          <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre">
-        </div>
-        <div>
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="tu@email.com">
-        </div>
-        <div>
-          <label for="mensaje">Mensaje</label>
-          <textarea id="mensaje" name="mensaje" placeholder="Contame en qué puedo ayudarte"></textarea>
-        </div>
-        <button type="submit">Enviar</button>
-      </form>
+     <div>
+       <label for="nombre">Nombre</label>
+       <input type="text" id="nombre" name="nombre" placeholder="Tu nombre">
+       <span id="error-nombre" class="error-mensaje"></span>
+      </div>
+       <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="tu@email.com">
+        <span id="error-email" class="error-mensaje"></span>
+       </div>
+       <div>
+         <label for="mensaje">Mensaje</label>
+         <textarea id="mensaje" name="mensaje" placeholder="Contame en qué puedo ayudarte"></textarea>
+         <span id="error-mensaje-campo" class="error-mensaje"></span>
+       </div>
+     <button type="submit">Enviar</button>
+     <p id="exito-mensaje" class="exito-mensaje"></p>
+    </form>
     </section>
   </main>
 
