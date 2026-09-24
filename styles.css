@@ -75,9 +75,36 @@ nav {
 }
 
 .logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1F5A5E, #C9A24B);
+  color: #fff;
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
   font-weight: 700;
+  box-shadow: 0 0.5rem 1rem rgba(31, 90, 94, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: logoPulse 2.4s ease-in-out infinite;
+}
+
+.logo:hover {
+  transform: scale(1.08) rotate(-4deg);
+  box-shadow: 0 0.85rem 1.5rem rgba(31, 90, 94, 0.45);
+}
+
+@keyframes logoPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0.5rem 1rem rgba(31, 90, 94, 0.35);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0.75rem 1.4rem rgba(201, 162, 75, 0.4);
+  }
 }
 
 .nav-links {
@@ -95,6 +122,16 @@ nav {
 
 .nav-links a:hover {
   color: #1F5A5E;
+}
+
+nav {
+  position: relative;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 #toggle-tema {
@@ -115,6 +152,7 @@ nav {
    HERO
    ============================================ */
 #hero {
+  position: relative;
   min-height: 100vh;
   max-width: 100%;
   display: flex;
@@ -159,10 +197,58 @@ nav {
   font-size: clamp(1rem, 2vw, 1.3rem);
   font-family: 'Inter', sans-serif;
   max-width: 40rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
   opacity: 0;
   animation: aparecer 0.8s ease-out forwards;
   animation-delay: 0.4s;
+}
+
+.clima-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(201, 162, 75, 0.22), rgba(31, 90, 94, 0.12));
+  border: 1px solid rgba(201, 162, 75, 0.35);
+  color: #173d3f;
+  font-weight: 700;
+  font-size: 0.68rem;
+  line-height: 1;
+  white-space: nowrap;
+  box-shadow: 0 0.2rem 0.45rem rgba(31, 90, 94, 0.12);
+  opacity: 0;
+  animation: aparecer 0.8s ease-out forwards;
+  animation-delay: 0.7s;
+}
+
+.clima-emoji {
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.clima-temp {
+  font-size: 0.68rem;
+}
+
+.clima-ciudad {
+  font-size: 0.58rem;
+  opacity: 0.85;
+  letter-spacing: 0.03em;
+}
+
+.clima-emoji {
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+#hero .clima-card {
+  display: none;
+}
+
+section:not(#hero) .clima-card {
+  display: inline-flex !important;
 }
 
 .btn-cta {
@@ -431,6 +517,12 @@ body.dark-mode .tarjeta-proyecto p {
 body.dark-mode .tag {
   background: #16302F;
   color: #C9A24B;
+}
+
+body.dark-mode .clima-card {
+  background: rgba(201, 162, 75, 0.12);
+  border-color: rgba(201, 162, 75, 0.35);
+  color: #f0f0f0;
 }
 
 body.dark-mode input,
