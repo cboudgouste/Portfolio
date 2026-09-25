@@ -201,16 +201,27 @@ async function obtenerClimaTandil() {
     const data = await respuesta.json();
     const temperatura = data.current?.temperature_2m ?? 'N/A';
     const codigo = data.current?.weather_code ?? 0;
+    const descripcion = obtenerTextoClima(codigo);
     const icono = obtenerIconoClima(codigo);
 
     climaElemento.innerHTML = `
-      <span class="clima-emoji">${icono}</span>
-      <span class="clima-temp">${temperatura}°C</span>
+      <div class="clima-linea-principal">
+        <span class="clima-emoji">${icono}</span>
+        <span class="clima-temp">${temperatura}°C</span>
+      </div>
+      <span class="clima-texto">${descripcion}</span>
       <span class="clima-ciudad">${ciudadClima}</span>
     `;
   } catch (error) {
     console.error('No se pudo cargar el clima:', error);
-    climaElemento.innerHTML = `<span class="clima-emoji">🌦️</span><span class="clima-temp">--°C</span><span class="clima-ciudad">${ciudadClima}</span>`;
+    climaElemento.innerHTML = `
+      <div class="clima-linea-principal">
+        <span class="clima-emoji">🌦️</span>
+        <span class="clima-temp">--°C</span>
+      </div>
+      <span class="clima-texto">Sin datos</span>
+      <span class="clima-ciudad">${ciudadClima}</span>
+    `;
   }
 }
 

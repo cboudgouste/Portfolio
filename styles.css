@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2.2rem;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -30,9 +35,10 @@ a {
 }
 
 section {
-  padding: 5rem 1.5rem;
+  padding: 3.5rem 1.5rem 5rem;
   max-width: 75rem;
   margin: 0 auto;
+  scroll-margin-top: 2.2rem;
 }
 
 section h2 {
@@ -44,6 +50,11 @@ section h2 {
 #proyectos h2,
 #habilidades h2 {
   margin-bottom: 0;
+}
+
+#habilidades {
+  padding-top: 4.5rem;
+  padding-bottom: 4rem;
 }
 
 footer {
@@ -205,50 +216,57 @@ nav {
 
 .clima-card {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.2rem;
-  padding: 0.3rem 0.55rem;
-  border-radius: 999px;
-  background: linear-gradient(135deg, rgba(201, 162, 75, 0.22), rgba(31, 90, 94, 0.12));
-  border: 1px solid rgba(201, 162, 75, 0.35);
-  color: #173d3f;
+  gap: 0.14rem;
+  padding: 0.55rem 0.75rem;
+  min-height: 3.6rem;
+  min-width: 7.4rem;
+  border-radius: 0.8rem;
+  background: linear-gradient(135deg, rgba(31, 90, 94, 0.92), rgba(201, 162, 75, 0.8));
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fffaf1;
   font-weight: 700;
-  font-size: 0.68rem;
-  line-height: 1;
-  white-space: nowrap;
-  box-shadow: 0 0.2rem 0.45rem rgba(31, 90, 94, 0.12);
-  opacity: 0;
-  animation: aparecer 0.8s ease-out forwards;
-  animation-delay: 0.7s;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  box-shadow: 0 0.35rem 0.8rem rgba(31, 90, 94, 0.24);
+  opacity: 1;
+  text-align: center;
+  backdrop-filter: blur(2px);
+  margin: 0 auto 1.25rem;
+}
+
+.clima-linea-principal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
 }
 
 .clima-emoji {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   line-height: 1;
 }
 
 .clima-temp {
-  font-size: 0.68rem;
+  font-size: 1.08rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
 }
 
 .clima-ciudad {
-  font-size: 0.58rem;
-  opacity: 0.85;
+  font-size: 0.6rem;
+  opacity: 0.88;
   letter-spacing: 0.03em;
 }
 
-.clima-emoji {
-  font-size: 0.8rem;
-  line-height: 1;
-}
-
-#hero .clima-card {
-  display: none;
-}
-
-section:not(#hero) .clima-card {
-  display: inline-flex !important;
+.clima-texto {
+  font-size: 0.52rem;
+  font-weight: 600;
+  opacity: 0.85;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
 }
 
 .btn-cta {
@@ -365,13 +383,14 @@ section:not(#hero) .clima-card {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  row-gap: 1.5rem;     /* separación vertical, entre líneas */
-  column-gap: 0.75rem; /* separación horizontal, entre tags */
+  row-gap: 1.6rem;
+  column-gap: 0.8rem;
+  margin-top: 2.1rem;
 }
 
 .tag {
   display: inline-block;
-  padding: 0.5rem 1.2rem;
+  padding: 0.65rem 1.35rem;
   border-radius: 2rem;
   background: #E8EDE9;
   color: #1F5A5E;
@@ -390,29 +409,30 @@ section:not(#hero) .clima-card {
    CONTACTO (Formulario)
    ============================================ */
 #contacto {
-  max-width: 40rem;
+  max-width: 36rem;
+  padding-top: 3.5rem;
 }
 
 #form-contacto {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 0.9rem;
 }
 
 #form-contacto label {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 600;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.25rem;
   display: block;
 }
 
 #form-contacto input,
 #form-contacto textarea {
   width: 100%;
-  padding: 0.8rem 1rem;
+  padding: 0.7rem 0.85rem;
   border: 0.0625rem solid #ccc;
   border-radius: 0.5rem;
-  font-size: 1rem;
+  font-size: 0.96rem;
   font-family: inherit;
   outline: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -420,7 +440,7 @@ section:not(#hero) .clima-card {
 
 #form-contacto textarea {
   resize: vertical;
-  min-height: 8rem;
+  min-height: 6.5rem;
 }
 
 #form-contacto input:focus,
@@ -430,19 +450,24 @@ section:not(#hero) .clima-card {
 }
 
 #form-contacto button {
-  padding: 0.9rem;
+  padding: 0.8rem 1rem;
   border: none;
   border-radius: 0.5rem;
-  background: #1F5A5E;
+  background: linear-gradient(135deg, #1F5A5E, #C9A24B);
   color: #ffffff;
-  font-size: 1rem;
+  font-size: 0.96rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  width: fit-content;
+  min-width: 9rem;
+  box-shadow: 0 0.5rem 1rem rgba(31, 90, 94, 0.22);
 }
 
 #form-contacto button:hover {
-  background: #163E41;
+  transform: translateY(-0.1rem);
+  filter: brightness(1.04);
+  box-shadow: 0 0.65rem 1.2rem rgba(31, 90, 94, 0.28);
 }
 
 .error-mensaje {
@@ -464,10 +489,11 @@ section:not(#hero) .clima-card {
   margin-top: 0.5rem;
   padding: 0.9rem 1rem;
   border-radius: 0.5rem;
-  background: #E4F3E8;
-  color: #1F5A5E;
+  background: linear-gradient(135deg, rgba(31, 90, 94, 0.95), rgba(201, 162, 75, 0.9));
+  color: #ffffff;
   font-weight: 600;
   text-align: center;
+  box-shadow: 0 0.5rem 1rem rgba(31, 90, 94, 0.18);
 }
 
 .exito-mensaje.visible {
@@ -476,70 +502,100 @@ section:not(#hero) .clima-card {
 }
 
 body.dark-mode .exito-mensaje {
-  background: #1E3B32;
-  color: #C9A24B;
+  background: linear-gradient(135deg, rgba(31, 90, 94, 0.95), rgba(201, 162, 75, 0.9));
+  color: #fffaf1;
 }
 
 /* ============================================
    MODO OSCURO
    ============================================ */
 body.dark-mode {
-  background: #12262B;
-  color: #e0e0e0;
+  background: linear-gradient(180deg, #0d1b1f 0%, #122b2f 100%);
+  color: #edf4f2;
 }
 
 body.dark-mode header {
-  background: #16302F;
-  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.4);
+  background: rgba(19, 44, 48, 0.94);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0.125rem 0.75rem rgba(0, 0, 0, 0.35);
 }
 
 body.dark-mode .logo {
-  color: #e0e0e0;
+  color: #f7f4ee;
+  box-shadow: 0 0.7rem 1.4rem rgba(201, 162, 75, 0.3);
 }
 
 body.dark-mode .nav-links a {
-  color: #e0e0e0;
+  color: #edf4f2;
+}
+
+body.dark-mode .nav-links a:hover {
+  color: #f1c96a;
+}
+
+body.dark-mode #toggle-tema {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f5d88f;
 }
 
 body.dark-mode #toggle-tema:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(201, 162, 75, 0.12);
 }
 
 body.dark-mode .tarjeta-proyecto {
   background: #16302F;
   color: #e0e0e0;
+  box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.25);
 }
 
 body.dark-mode .tarjeta-proyecto p {
-  color: #b0b0b0;
+  color: #c7d6d5;
 }
 
 body.dark-mode .tag {
-  background: #16302F;
-  color: #C9A24B;
+  background: rgba(22, 48, 47, 0.9);
+  color: #f1c96a;
+  border: 1px solid rgba(241, 201, 106, 0.25);
 }
 
 body.dark-mode .clima-card {
-  background: rgba(201, 162, 75, 0.12);
-  border-color: rgba(201, 162, 75, 0.35);
-  color: #f0f0f0;
+  background: linear-gradient(135deg, rgba(31, 90, 94, 0.95), rgba(201, 162, 75, 0.78));
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fffaf1;
+  box-shadow: 0 0.35rem 0.8rem rgba(31, 90, 94, 0.3);
+}
+
+body.dark-mode .clima-texto,
+body.dark-mode .clima-ciudad {
+  color: #fffaf1;
 }
 
 body.dark-mode input,
 body.dark-mode textarea {
-  background: #16302F;
-  color: #e0e0e0;
-  border-color: #444;
+  background: rgba(22, 48, 47, 0.9);
+  color: #eef4f4;
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
 body.dark-mode input:focus,
 body.dark-mode textarea:focus {
-  border-color: #C9A24B;
-  box-shadow: 0 0 0 0.2rem rgba(201, 162, 75, 0.25);
+  border-color: #f1c96a;
+  box-shadow: 0 0 0 0.2rem rgba(241, 201, 106, 0.2);
+}
+
+body.dark-mode #form-contacto button {
+  background: linear-gradient(135deg, #1F5A5E, #C9A24B);
+  color: #fffaf0;
+}
+
+body.dark-mode .exito-mensaje {
+  background: rgba(25, 68, 61, 0.8);
+  color: #f7d98a;
 }
 
 body.dark-mode footer {
-  color: #999;
+  color: #afc2c0;
 }
 
 /* ============================================
