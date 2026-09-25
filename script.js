@@ -75,6 +75,7 @@ function limpiarError(campo, spanError) {
 }
 
 // Validar cada campo apenas el usuario deja de tocarlo o escribe
+
 campoNombre.addEventListener('blur', validarNombre);
 campoEmail.addEventListener('blur', validarEmail);
 campoMensaje.addEventListener('blur', validarMensaje);
@@ -89,7 +90,19 @@ campoMensaje.addEventListener('input', () => {
   if (campoMensaje.classList.contains('campo-invalido')) validarMensaje();
 });
 
-form.addEventListener('submit', (e) => {
+function mostrarMensajeExito(nombre) {
+  return new Promise((resolve) => {
+    const nombreFormateado = nombre.trim();
+    exitoMensaje.textContent = `Gracias ${nombreFormateado}, por comunicarte conmigo. A la brevedad te contestaré tu mensaje.`;
+    exitoMensaje.classList.add('visible');
+
+    setTimeout(() => {
+      resolve();
+    }, 150);
+  });
+}
+
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   const nombreOk = validarNombre();
@@ -97,8 +110,8 @@ form.addEventListener('submit', (e) => {
   const mensajeOk = validarMensaje();
 
   if (nombreOk && emailOk && mensajeOk) {
-    exitoMensaje.textContent = 'Gracias por comunicarte conmigo, a la brevedad contestaré tu mensaje.';
-    exitoMensaje.classList.add('visible');
+    const nombreContacto = campoNombre.value.trim();
+    await mostrarMensajeExito(nombreContacto);
     form.reset();
   } else {
     exitoMensaje.classList.remove('visible');
