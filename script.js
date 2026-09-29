@@ -112,7 +112,6 @@ form.addEventListener('submit', async (e) => {
   if (nombreOk && emailOk && mensajeOk) {
     const nombreContacto = campoNombre.value.trim();
     await mostrarMensajeExito(nombreContacto);
-    form.reset();
   } else {
     exitoMensaje.classList.remove('visible');
   }
