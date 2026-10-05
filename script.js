@@ -1,20 +1,31 @@
 // ============================================
-// a) MODO OSCURO CON localStorage
+// a) TEMA DEL SISTEMA Y PREFERENCIA MANUAL
 // ============================================
 const toggleBtn = document.getElementById('toggle-tema');
 const body = document.body;
+const preferenciaSistema = window.matchMedia('(prefers-color-scheme: dark)');
+let temaGuardado = localStorage.getItem('tema');
 
-// Cargar preferencia guardada
-if (localStorage.getItem('tema') === 'oscuro') {
-  body.classList.add('dark-mode');
-  toggleBtn.textContent = '☀️';
+function aplicarTema(esOscuro) {
+  body.classList.toggle('dark-mode', esOscuro);
+  toggleBtn.textContent = esOscuro ? '☀️' : '🌙';
+  toggleBtn.setAttribute('aria-label', esOscuro ? 'Activar modo claro' : 'Activar modo oscuro');
+  toggleBtn.setAttribute('aria-pressed', String(esOscuro));
 }
 
+aplicarTema(temaGuardado ? temaGuardado === 'oscuro' : preferenciaSistema.matches);
+
 toggleBtn.addEventListener('click', () => {
-  body.classList.toggle('dark-mode');
-  const esOscuro = body.classList.contains('dark-mode');
-  toggleBtn.textContent = esOscuro ? '☀️' : '🌙';
+  const esOscuro = !body.classList.contains('dark-mode');
+  aplicarTema(esOscuro);
   localStorage.setItem('tema', esOscuro ? 'oscuro' : 'claro');
+  temaGuardado = esOscuro ? 'oscuro' : 'claro';
+});
+
+preferenciaSistema.addEventListener('change', (evento) => {
+  if (temaGuardado === null) {
+    aplicarTema(evento.matches);
+  }
 });
 
 // ============================================
@@ -203,6 +214,9 @@ async function obtenerClimaTandil() {
 
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${coordenadasClima.latitud}&longitude=${coordenadasClima.longitud}&current=temperature_2m,weather_code&timezone=auto&language=es`;
 
+  climaElemento.setAttribute('aria-busy', 'true');
+  climaElemento.textContent = 'Actualizando clima...';
+
   try {
     const respuesta = await fetch(url);
 
@@ -215,6 +229,7 @@ async function obtenerClimaTandil() {
     const codigo = data.current?.weather_code ?? 0;
     const descripcion = obtenerTextoClima(codigo);
     const icono = obtenerIconoClima(codigo);
+    const hora = data.current?.time?.split('T')[1]?.slice(0, 5) ?? '--:--';
 
     climaElemento.innerHTML = `
       <div class="clima-linea-principal">
@@ -223,7 +238,9 @@ async function obtenerClimaTandil() {
       </div>
       <span class="clima-texto">${descripcion}</span>
       <span class="clima-ciudad">${ciudadClima}</span>
+      <span class="clima-hora">Hora local: ${hora}</span>
     `;
+    climaElemento.setAttribute('aria-busy', 'false');
   } catch (error) {
     console.error('No se pudo cargar el clima:', error);
     climaElemento.innerHTML = `
@@ -231,9 +248,10 @@ async function obtenerClimaTandil() {
         <span class="clima-emoji">🌦️</span>
         <span class="clima-temp">--°C</span>
       </div>
-      <span class="clima-texto">Sin datos</span>
+      <span class="clima-texto">No se pudo cargar el clima</span>
       <span class="clima-ciudad">${ciudadClima}</span>
     `;
+    climaElemento.setAttribute('aria-busy', 'false');
   }
 }
 
